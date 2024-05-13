@@ -1,9 +1,10 @@
 require('dotenv').config();
 const express = require('express');
-const HttpError = require('./utils/http-error');
+const { HttpError } = require('./utils/http-error');
 
 const app = express();
 
+app.use('/heroes', require('./routes/heroes'));
 
 app.use((req, res, next) => {
     const error = new HttpError(404, "Endpoint Not found");
